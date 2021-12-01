@@ -20,11 +20,10 @@ select tblFilme.nome as nomeFilme, tblFilme.nomeOriginal,
        inner join tblfilme_ator on tblFilme.idFilme = tblfilme_ator.idFilme
        inner join tblGenero on tblGenero.idGenero = tblfilme_genero.idGenero 
        inner join tblclassificacao on tblFilme.idClassificacao = tblclassificacao.idClassificacao 
-       inner join tblAtor on tblAtor.dataNascimento >= "1940-01-01" and tblfilme_ator.idAtor = tblator.idAtor
+       inner join tblAtor on tblfilme_ator.idAtor = tblator.idAtor
+       where year(tblAtor.dataNascimento) >= '1940'
        order by nomeAtor;      
        
        
        
-      git add .
-      git commit -m "Atividade Inner Join :white_check_mark:"
-      git push origin main
+    
