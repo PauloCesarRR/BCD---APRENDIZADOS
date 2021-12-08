@@ -32,16 +32,16 @@
   1);
   
   insert into tblFilme_Diretor (idFilme, idDiretor)
-  values (3,2),
-		 (1,2);
+  values (2,1);
          
 insert into tblFilme_Roteirista (idFilme, idRoteirista)
-  values (3,1),
-		 (3,2);
+  values (2,3),
+		 (1,2),
+         (1,1);
          
 insert into tblFilme_Ator (idFilme, idAtor)
-  values (3,3),
-		 (3,4);
+  values (2,1),
+		 (2,5);
               
 
 insert into tblFilme_Estudio (idFilme, idEstudio)
