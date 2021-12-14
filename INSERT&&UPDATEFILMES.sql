@@ -7,7 +7,7 @@
   insert into tblFilme
   (nome, nomeOriginal, duracao,
   dataLancamento, dataRelancamento,
-  sinopse, fotoCapa, idClassificacao) values
+  sinopse, fotoCapa, idClassificacao, qtde) values
   ('UM SONHO DE LIBERDADE',
   'The Shawshank Redemption',
   '02:20:00',
@@ -15,7 +15,10 @@
   null,
   'Andy Dufresne faz amizade com Red, sofre as brutalidades da vida na cadeia, se adapta, ajuda os carcereiros.',
   'filme01.jpg',
-  14);
+  1,
+  23);
+  
+  alter table tblFilme add column qtde INT;
   
     insert into tblFilme
   (nome, nomeOriginal, duracao,
@@ -28,7 +31,7 @@
   null,
   'Andy Dufresne faz amizade com Red, sofre as brutalidades da vida na cadeia, se adapta, ajuda os carcereiros.',
   'filme02.jpg',
-  13,
+  1,
   1);
   
   insert into tblFilme_Diretor (idFilme, idDiretor)
@@ -48,7 +51,7 @@ insert into tblFilme_Estudio (idFilme, idEstudio)
   values (2,2);
   
  insert into tblfilme_genero (idFilme, idGenero)
-  values (3,10);
+  values (4,1);
  
  update tblFilme set sinopse = 'Forrest Gump' where idFilme = 3;
  
