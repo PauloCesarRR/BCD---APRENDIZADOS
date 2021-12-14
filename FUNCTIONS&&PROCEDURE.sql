@@ -57,30 +57,32 @@ create function saudacao()
 
 DELIMITER $$
 
+
 create procedure procListarFilmes (IN idGenero int)
 	BEGIN
-    
-    if idGenero > 0 then
-		select tblFilme.nome as nomeFilme, tblFilme.dataLancamento, 
+
+    set @sqlPrincipal = '	
+    select tblFilme.nome as nomeFilme, tblFilme.dataLancamento, 
 		tblGenero.nome as nomeGenero
 			from tblFilme
 			inner join tblFilme_Genero
 				on tblFilme.idFilme = tblFilme_Genero.idFilme
 			inner join tblGenero
-				on tblGenero.idGenero = tblFilme_Genero.idGenero
-		where tblGenero.idGenero = idGenero;
-	
-	elseif idGenero = 0 then
-		select tblFilme.nome as nomeFilme, tblFilme.dataLancamento, 
-		tblGenero.nome as nomeGenero
-		from tblFilme
-		inner join tblFilme_Genero
-			on tblFilme.idFilme = tblFilme_Genero.idFilme
-		inner join tblGenero
-			on tblGenero.idGenero = tblFilme_Genero.idGenero;
+				on tblGenero.idGenero = tblFilme_Genero.idGenero';
+    
+    if idGenero > 0 then
+		set @sqlCompleto := concat (@sqlPrincipal, 'where idGenero = ', idGenero);
+    else
+		set @sqlCompleto := @sqlPrincipal;
     end if;
     
+
+    prepare scriptSQL from @sqlCompleto;
+    execute scriptSQL;
+    
+    
     END $$
+    
     
     call procListarFilmes(1);
 
